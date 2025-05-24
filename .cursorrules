@@ -1,0 +1,79 @@
+############################################
+#  cursor rules – Memory Bank & workflow   #
+############################################
+
+[rules.Always]
+
+- name = "Maintain Memory Bank"
+  rule = """
+  Treat memory-bank/ as the canonical knowledge store.
+  Keep these files fresh and commit them with related code:
+
+  • projectbrief.md   – 120-word project elevator pitch.
+  • productContext.md – Market, KPIs, project type (UI-heavy or headless).
+  • systemPatterns.md – ADR lines “YYYY-MM-DD – decision – rationale”.
+  • techContext.md    – Libraries, services, major versions.
+  • activeContext.md  – Today’s focus (overwrite each session start).
+  • progress.md       – “YYYY-MM-DD – ✅ summary” per completed task.
+  • TASK.md           – Backlog ▸ In-Progress ▸ Done checklist.
+  • uiResearch/       – Competitor screenshots (if any).
+  """
+
+- name = "Git workflow via MCP"
+  rule = """
+  Use the *github* MCP server for all Git actions.
+  Commit messages must follow Conventional-Commit (feat:, fix:, chore:, etc.).
+  Bundle Memory-Bank edits with the motivating code.
+  Fallback to local git only if the server is down.
+  """
+
+- name = "95% confidence guard"
+  rule = "Do not change code until clarifying questions yield 95% confidence."
+
+- name = "Refactor guard (500 LOC)"
+  rule = "If a file exceeds 500 lines, stop and propose a refactor before coding."
+
+- name = "Unit-test policy (all languages)"
+  rule = "Every new function/class gets success, edge and failure tests under /tests mirroring source path."
+
+
+- name = "Memory-Bank update moments"
+  rule = """
+  ALWAYS touch memory-bank files at these times:
+  1. After a task is marked Done.
+  2. Before asking to start a new feature.
+  3. When the user types “sync memory bank”.
+  """
+
+- name = "Progress.md format rule"
+  rule = """
+  Each entry in memory-bank/progress.md MUST follow:
+    YYYY-MM-DD – ✅ <past-tense summary of completed work>
+  Example:
+    2025-05-12 – ✅ Resolved electron-store startup crash and hotkey binding
+  """
+  
+- name = "Auto-sync tech rules"
+  rule = """
+  On every commit or branch merge:
+
+  1. Scan package manifests (package.json, requirements.txt, pyproject.toml,
+     go.mod, Gemfile, etc.) and the file tree for languages/frameworks in use.
+
+  2. For each *newly detected* framework, library, or language:
+       • Append a concise stack-specific rule *below* '# --- tech-addon ---'.
+
+  3. For each rule already under '# --- tech-addon ---':
+       • If the referenced library or framework is **no longer present**
+         (removed or fully replaced), delete the rule.
+
+  4. When a library is **replaced** (e.g., Switch from Express to Fastify):
+       • Remove the obsolete rule for Express.
+       • Append a new rule for Fastify.
+
+  5. Show the diff for approval and commit via the GitHub MCP with a
+     Conventional-Commit message, bundling any Memory-Bank edits.
+  """
+
+# --- tech-addon ------------------------------------------------
+#   The agent appends stack-specific rules below this line.

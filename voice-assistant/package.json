@@ -1,0 +1,29 @@
+{
+  "name": "voice-assistant",
+  "version": "1.0.0",
+  "description": "AI Voice Assistant with grammar validation and goal management",
+  "main": "main.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dev": "nodemon --exec electron .",
+    "build": "electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "voice-assistant",
+    "ai",
+    "productivity",
+    "electron"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^36.3.1",
+    "electron-builder": "^26.0.12",
+    "electron-store": "^8.2.0",
+    "nodemon": "^3.1.10"
+  }
+}

@@ -1,0 +1,29 @@
+{
+    "mcpServers": {
+      "github": {
+        "command": "cmd",
+        "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-github@latest", "--token", "$GITHUB_TOKEN"]
+      },
+      "stackoverflow": {
+        "command": "cmd",
+        "args": ["/c", "npx", "-y", "@gscalzo/stackoverflow-mcp@latest"]
+      },
+      "context7": {
+        "command": "cmd",
+        "args": ["/c", "npx", "-y", "@upstash/context7-mcp@latest"]
+      },
+      "uiMock": {                     
+        "command": "cmd",
+        "args": ["/c", "npx", "-y", "@magicpatterns/mcp-server@latest"]
+      },
+      "diagram": {
+        "command": "cmd",
+        "args": ["/c", "npx", "-y", "@peng-shawn/mermaid-mcp-server@latest"]
+      },
+      "supabase": {                   
+        "command": "cmd",
+        "args": ["/c", "npx", "-y", "@supabase-community/mcp-server@latest"]
+      }
+    }
+  }
+  
