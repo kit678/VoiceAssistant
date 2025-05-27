@@ -4,5 +4,4 @@ voice-assistant/node_modules/
 # Environment variables
 voice-assistant/.env
 
-# Cursor IDE metadata
 .cursor/mcp.json
